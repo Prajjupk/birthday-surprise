@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Princess Surprise</title>
+
+<style>
+body {
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    text-align:center;
+    overflow-x: hidden; /* FIXED */
+}
+
+@keyframes gradientMove {
+    0% {background-position:0% 50%;}
+    50% {background-position:100% 50%;}
+    100% {background-position:0% 50%;}
+}
+/* === FLOATING PHOTO ANIMATION (ADD ONLY) === */
+.floating-img {
+    position: fixed;
+    width: 140px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    animation: floatMove 12s ease-in-out infinite;
+    z-index: 5;
+    pointer-events: none; /* don't block clicks */
+}
+
+@keyframes floatMove {
+    0%   { transform: translate(0,0) rotate(0deg); }
+    25%  { transform: translate(60px,-40px) rotate(5deg); }
+    50%  { transform: translate(-40px,60px) rotate(-5deg); }
+    75%  { transform: translate(50px,30px) rotate(3deg); }
+    100% { transform: translate(0,0) rotate(0deg); }
+}
+
+/* moving text */
+.floating-text {
+    position: fixed;
+    top: 8%;
+    left: -400px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #36c7c7;
+    animation: moveText 12s linear infinite;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+
+@keyframes moveText {
+    0% { left: -400px; }
+    100% { left: 120%; }
+}
+
+.floating-text2 {
+    position: fixed;
+    top: 15%;
+    left: 120%;
+    font-size: 18px;
+    color: #281223;
+    animation: moveTextReverse 14s linear infinite;
+}
+
+@keyframes moveTextReverse {
+    0% { left: 120%; }
+    100% { left: -400px; }
+}
+
+/* sparkles */
+.top-sparkle {
+    position: fixed;
+    top: 0;
+    font-size: 14px;
+    animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10vh); opacity:1;}
+    100% { transform: translateY(100vh); opacity:0;}
+}
+
+/* start */
+#startScreen {
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+button {
+    padding:15px 35px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(45deg,#ff4d6d,#ff85a2);
+    color:white;
+    cursor:pointer;
+}
+
+button:hover {
+    transform:scale(1.1);
+}
+
+/* main */
+#mainContent {
+    display:none;
+    padding:20px;
+}
+
+/* title */
+h1 {
+    color:#2b0a3d;
+    font-weight:800;
+}
+
+/* card */
+.card {
+    backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.9);
+    border-radius:25px;
+    padding:35px;
+    max-width:750px;
+    margin:auto;
+}
+
+/* text */
+.line {
+    opacity:0;
+    transform:translateY(20px);
+    animation:fadeUp 1s ease forwards;
+    line-height:1.8;
+    font-size:18px;
+    font-weight:600;
+    color:#1a1a1a;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* crown */
+.crown {
+    font-size:32px;
+}
+
+/* gallery */
+.gallery {
+    margin-top:40px;
+    padding-bottom:100px;
+}
+
+.gallery img {
+    width:200px;
+    border-radius:12px;
+    margin:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.gallery img:hover {
+    transform:scale(1.1);
+}
+</style>
+</head>
+<!-- === FLOATING PHOTOS (ADD ONLY) === -->
+<img src="photo1.png" class="floating-img" style="top:20%; left:5%;">
+<img src="photo2.png" class="floating-img" style="top:60%; left:80%; animation-delay:2s;">
+<img src="photo4.png" class="floating-img" style="top:75%; left:20%; animation-delay:4s;">
+
+<body>
+
+<div class="floating-text">🎉 HAPPY BIRTHDAY REKHA MA’AM  🎈✨</div>
+<div class="floating-text2">💖 HAPPY BIRTHDAY MA’AM 💖</div>
+
+<div id="startScreen">
+    <h1 style="color:white;">For A Beautiful Soul 👑</h1>
+    <button onclick="start()">Open Your Surprise</button>
+</div>
+
+<div id="mainContent">
+
+    <div class="crown">👑</div>
+
+    <h1>Happy Birthday, Rekha Ma’am  ✨</h1>
+
+    <div class="card">
+
+        <p class="line" style="animation-delay:0.5s">There is something truly rare about you… not just your charming and graceful presence, but the way your smile carries strength behind it.</p>
+
+        <p class="line" style="animation-delay:1.5s">No matter what you might be going through personally, the moment you step into class, you bring positivity, confidence, and energy that inspires all of us.</p>
+
+        <p class="line" style="animation-delay:2.5s">I’ve never seen you come with a dull face—you always choose to smile, and that itself teaches us one of the biggest life lessons: to stay strong and graceful no matter what.</p>
+
+        <p class="line" style="animation-delay:3.5s">That kind of beauty goes far beyond appearance, but still, your elegance and charm make it even more special.</p>
+
+        <p class="line" style="animation-delay:4.5s">Thank you for being not just a teacher, but a source of motivation and positivity in my life. I truly feel lucky to be one of your students.</p>
+
+        <p class="line" style="animation-delay:5.5s">Wishing you a life as beautiful as your smile, as strong as your spirit, and as inspiring as your presence 🌸</p>
+
+    </div>
+
+    <h2 style="margin-top:30px;">Memories 📸</h2>
+
+    <div class="gallery">
+        <img src="photo1.png">
+        <img src="photo2.png">
+        <img src="photo3.png">
+        <img src="photo4.png">
+    </div>
+
+</div>
+<script>
+function start(){
+    document.getElementById("startScreen").style.display="none";
+    document.getElementById("mainContent").style.display="block";
+    topSparkles();
+}
+
+
+
+/* bottom sparkles */
+function createSparkles(){
+    setInterval(()=>{
+        let s = document.createElement("div");
+        s.innerHTML="✨  🎂  🎈";
+        s.classList.add("sparkle");
+        s.style.left = Math.random()*100+"vw";
+        s.style.top = "80vh";
+        document.body.appendChild(s);
+        setTimeout(()=>s.remove(),3000);
+    },200);
+}
+
+/* top falling sparkles */
+function topSparkles(){
+    setInterval(()=>{
+        let sp = document.createElement("div");
+        sp.innerHTML="✨    🎉";
+        sp.classList.add("top-sparkle");
+        sp.style.left = Math.random()*100+"vw";
+        document.body.appendChild(sp);
+        setTimeout(()=>sp.remove(),5000);
+    },150);
+}
+</script>
+
+</body>
+</html>
