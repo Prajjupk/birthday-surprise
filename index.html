@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Princess Surprise</title>
 
 <style>
@@ -11,7 +12,7 @@ body {
     background-size: 400% 400%;
     animation: gradientMove 10s ease infinite;
     text-align:center;
-    overflow-x: hidden; /* FIXED */
+    overflow-x: hidden;
 }
 
 @keyframes gradientMove {
@@ -19,7 +20,8 @@ body {
     50% {background-position:100% 50%;}
     100% {background-position:0% 50%;}
 }
-/* === FLOATING PHOTO ANIMATION (ADD ONLY) === */
+
+/* FLOATING IMAGES */
 .floating-img {
     position: fixed;
     width: 140px;
@@ -27,18 +29,16 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
     animation: floatMove 12s ease-in-out infinite;
     z-index: 5;
-    pointer-events: none; /* don't block clicks */
+    pointer-events: none;
 }
 
 @keyframes floatMove {
-    0%   { transform: translate(0,0) rotate(0deg); }
-    25%  { transform: translate(60px,-40px) rotate(5deg); }
-    50%  { transform: translate(-40px,60px) rotate(-5deg); }
-    75%  { transform: translate(50px,30px) rotate(3deg); }
-    100% { transform: translate(0,0) rotate(0deg); }
+    0%   { transform: translate(0,0); }
+    50%  { transform: translate(40px,-40px); }
+    100% { transform: translate(0,0); }
 }
 
-/* moving text */
+/* MOVING TEXT */
 .floating-text {
     position: fixed;
     top: 8%;
@@ -47,7 +47,6 @@ body {
     font-weight: 700;
     color: #36c7c7;
     animation: moveText 12s linear infinite;
-    text-shadow: 0 0 10px rgba(255,255,255,0.8);
 }
 
 @keyframes moveText {
@@ -69,7 +68,7 @@ body {
     100% { left: -400px; }
 }
 
-/* sparkles */
+/* SPARKLES */
 .top-sparkle {
     position: fixed;
     top: 0;
@@ -82,7 +81,7 @@ body {
     100% { transform: translateY(100vh); opacity:0;}
 }
 
-/* start */
+/* START SCREEN */
 #startScreen {
     height:100vh;
     display:flex;
@@ -106,35 +105,36 @@ button:hover {
     transform:scale(1.1);
 }
 
-/* main */
+/* MAIN */
 #mainContent {
     display:none;
     padding:20px;
 }
 
-/* title */
+/* TITLE */
 h1 {
     color:#2b0a3d;
     font-weight:800;
+    font-size: clamp(22px, 5vw, 36px);
 }
 
-/* card */
+/* CARD */
 .card {
     backdrop-filter: blur(20px);
     background: rgba(255,255,255,0.9);
     border-radius:25px;
-    padding:35px;
-    max-width:750px;
+    padding:20px;
+    max-width:90%;
     margin:auto;
 }
 
-/* text */
+/* TEXT */
 .line {
     opacity:0;
     transform:translateY(20px);
     animation:fadeUp 1s ease forwards;
     line-height:1.8;
-    font-size:18px;
+    font-size:16px;
     font-weight:600;
     color:#1a1a1a;
 }
@@ -146,26 +146,42 @@ h1 {
     }
 }
 
-/* crown */
-.crown {
-    font-size:32px;
-}
-
-/* gallery */
+/* GALLERY */
 .gallery {
-    margin-top:40px;
-    padding-bottom:100px;
+    margin-top: 40px;
+    padding-bottom: 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    padding: 20px;
 }
 
 .gallery img {
-    width:200px;
-    border-radius:12px;
-    margin:10px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
 }
 
 .gallery img:hover {
-    transform:scale(1.1);
+    transform: scale(1.05);
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 768px) {
+    .floating-img {
+        width: 90px;
+        opacity: 0.6;
+    }
+
+    .floating-text,
+    .floating-text2 {
+        font-size: 14px;
+    }
+
+    .line {
+        font-size:14px;
+    }
 }
 </style>
 </head>
@@ -194,9 +210,9 @@ h1 {
 
         <p class="line" style="animation-delay:0.5s">There is something truly rare about you… not just your charming and graceful presence, but the way your smile carries strength behind it.</p>
 
-        <p class="line" style="animation-delay:1.5s">No matter what you might be going through personally, the moment you step into class, you bring positivity, confidence, and energy that inspires all of us.</p>
+        <p class="line" style="animation-delay:1.5s">I’ve never seen you come with a dull face—you always choose to smile, and that itself teaches us one of the biggest life lessons: to stay strong and graceful no matter what.</p>
 
-        <p class="line" style="animation-delay:2.5s">I’ve never seen you come with a dull face—you always choose to smile, and that itself teaches us one of the biggest life lessons: to stay strong and graceful no matter what.</p>
+        <p class="line" style="animation-delay:2.5s">No matter what you might be going through personally, the moment you step into class, you bring positivity, confidence, and energy that inspires all of us.</p>
 
         <p class="line" style="animation-delay:3.5s">That kind of beauty goes far beyond appearance, but still, your elegance and charm make it even more special.</p>
 
